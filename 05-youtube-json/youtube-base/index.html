@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>testing jQuery AJAX request</title>
+</head>
+<body>
+
+	<div></div>
+
+	<button>Click me!!</button>
+
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script>
+
+		$('button').on('click', function () {
+
+			$.ajax({
+				url: 'youtube.json'
+			})
+			.done(function( youtubeData ) {
+				// temporal hack to solve AJAX issue
+				youtubeData = JSON.parse(youtubeData);
+
+				console.log(youtubeData);
+				console.log(youtubeData.data.items[0].title);
+				var thumbnail = youtubeData.data.items[0].thumbnail.default;
+				var title = youtubeData.data.items[0].title;
+				var video = youtubeData.data.items[0].player.default;
+
+				var tagA = '<a href="' + video +'">video</a>';
+				var tagImg = '<img src="' + thumbnail +'">';
+
+				$("div").append(title);
+				$("div").append(tagImg);
+				$("div").append(tagA);
+
+
+			});
+
+		});
+
+	</script>
+</body>
+</html>

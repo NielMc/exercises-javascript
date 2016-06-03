@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>testing jQuery AJAX request</title>
+</head>
+<body>
+
+	<div></div>
+
+	<button>Click me!!</button>
+
+	<script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script>
+
+		$('button').on('click', function () {
+
+			$.ajax({
+				url: 'youtube.json'
+			})
+			.done(function( jsondata ) {
+
+				debugger;
+				console.log(jsondata);
+				console.log(jsondata.apiVersion);
+		
+				// var thumbnail = jsondata.data.items.thumbnail.default;
+				// var title = items.title;
+				// var video = items.player.default
+
+				// $("div").append("<p>Hello " + title + " from " + thumbnail + "</p>");
+
+				// })
+
+			})
+
+		});
+
+	</script>
+</body>
+</html>
